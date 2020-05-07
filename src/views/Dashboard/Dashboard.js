@@ -50,20 +50,16 @@ export default function Dashboard() {
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
-                <Icon>content_copy</Icon>
+                <Icon>note_add</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Used Space</p>
+              <p className={classes.cardCategory}>Created Tickets</p>
               <h3 className={classes.cardTitle}>
-                49/50 <small>GB</small>
-              </h3>
+10              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <Danger>
-                  <Warning />
-                </Danger>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  Get more space
+                List of Created Tickets
                 </a>
               </div>
             </CardFooter>

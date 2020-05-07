@@ -11,7 +11,7 @@ import {
 const dropdownStyle = theme => ({
   buttonLink: {
     [theme.breakpoints.down("md")]: {
-      display: "flex",
+      display: "center",
       marginLeft: "30px",
       width: "auto"
     }

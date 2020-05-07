@@ -12,6 +12,7 @@ import {
   whiteColor,
   grayColor,
   blackColor,
+  greenColor,
   hexToRgb
 } from "assets/jss/material-dashboard-react.js";
 
@@ -71,7 +72,7 @@ const sidebarStyle = theme => ({
 
       height: "1px",
       right: "15px",
-      width: "calc(100% - 30px)",
+      width: "200%",
       backgroundColor: "rgba(" + hexToRgb(grayColor[6]) + ", 0.3)"
     }
   },
@@ -87,7 +88,7 @@ const sidebarStyle = theme => ({
     textDecoration: "none",
     backgroundColor: "transparent",
     "&,&:hover": {
-      color: whiteColor
+      color: blackColor
     }
   },
   logoLinkRTL: {
@@ -124,8 +125,8 @@ const sidebarStyle = theme => ({
       height: "100%",
       content: '""',
       display: "block",
-      background: blackColor,
-      opacity: ".8"
+      background: whiteColor,
+      opacity: "1"
     }
   },
   list: {
@@ -165,7 +166,7 @@ const sidebarStyle = theme => ({
     marginRight: "15px",
     textAlign: "center",
     verticalAlign: "middle",
-    color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)"
+    color: "rgba(" + hexToRgb(blackColor) + ", 0.8)"
   },
   itemIconRTL: {
     marginRight: "3px",
@@ -176,8 +177,8 @@ const sidebarStyle = theme => ({
     ...defaultFont,
     margin: "0",
     lineHeight: "30px",
-    fontSize: "14px",
-    color: whiteColor
+    fontSize: "15px",
+    color: blackColor
   },
   itemTextRTL: {
     textAlign: "right"
