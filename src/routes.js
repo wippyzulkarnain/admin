@@ -65,7 +65,7 @@ const dashboardRoutes = [
   },
   {
     path: "/typography",
-    name: "Assign Ticke",
+    name: "My Tickets",
     rtlName: "طباعة",
     icon: LibraryBooks,
     component: Typography,

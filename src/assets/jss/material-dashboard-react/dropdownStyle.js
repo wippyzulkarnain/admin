@@ -11,7 +11,7 @@ import {
 const dropdownStyle = theme => ({
   buttonLink: {
     [theme.breakpoints.down("md")]: {
-      display: "center",
+      display: "bottom",
       marginLeft: "30px",
       width: "auto"
     }
@@ -68,8 +68,8 @@ const dropdownStyle = theme => ({
         backgroundColor: "transparent !important",
         "& ul li": {
           color: whiteColor + " !important",
-          margin: "10px 15px 0!important",
-          padding: "10px 15px !important",
+          margin: "10px 10px 0!important",
+          padding: "10px 14px !important",
           "&:hover": {
             backgroundColor: "hsla(0,0%,78%,.2)",
             boxShadow: "none"
@@ -86,7 +86,7 @@ const dropdownStyle = theme => ({
     zIndex: "1000",
     minWidth: "160px",
     padding: "5px 0",
-    margin: "2px 0 0",
+    margin: "0px 0 0",
     fontSize: "14px",
     textAlign: "left",
     listStyle: "none",
@@ -98,7 +98,7 @@ const dropdownStyle = theme => ({
     ...defaultFont,
     fontSize: "13px",
     padding: "10px 20px",
-    margin: "0 5px",
+    margin: "0 0px",
     borderRadius: "2px",
     WebkitTransition: "all 150ms linear",
     MozTransition: "all 150ms linear",

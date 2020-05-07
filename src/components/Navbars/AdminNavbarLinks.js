@@ -74,7 +74,7 @@ export default function AdminNavbarLinks() {
       >
         <Dashboard className={classes.icons} />
         <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>Dashboard</p>
+          <p className={classes.linkText}>Welcome</p>
         </Hidden>
       </Button>
       <div className={classes.manager}>

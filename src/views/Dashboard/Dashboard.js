@@ -46,7 +46,7 @@ export default function Dashboard() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={12} sm={6} md={3}>
+        <GridItem xs={12} sm={6} md={4}>
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
@@ -54,7 +54,8 @@ export default function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Created Tickets</p>
               <h3 className={classes.cardTitle}>
-10              </h3>
+            30              
+            </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -65,41 +66,149 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={3}>
+        
+        <GridItem xs={12} sm={6} md={4}>
           <Card>
-            <CardHeader color="success" stats icon>
-              <CardIcon color="success">
-                <Store />
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Revenue</p>
-              <h3 className={classes.cardTitle}>$34,245</h3>
+              <p className={classes.cardCategory}>Approved Tickets</p>
+              <h3 className={classes.cardTitle}>
+              20
+              </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <DateRange />
-                Last 24 Hours
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Approved Tickets
+                </a>
               </div>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={3}>
+
+        <GridItem xs={12} sm={6} md={4}>
           <Card>
-            <CardHeader color="danger" stats icon>
-              <CardIcon color="danger">
-                <Icon>info_outline</Icon>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Fixed Issues</p>
-              <h3 className={classes.cardTitle}>75</h3>
+              <p className={classes.cardCategory}>Assigned Tickets</p>
+              <h3 className={classes.cardTitle}>
+                13           
+            </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <LocalOffer />
-                Tracked from Github
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Assigned Tickets
+                </a>
               </div>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={3}>
+        <GridItem xs={14} sm={6} md={4}>
+          <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Work In Progress Tickets</p>
+              <h3 className={classes.cardTitle}>
+              28             
+              </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Work in Progress Tickets
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={4}>
+        <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Resolved Tickets</p>
+              <h3 className={classes.cardTitle}>
+                12      
+            </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Resolved Tickets
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={4}>
+         <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Closed Tickets</p>
+              <h3 className={classes.cardTitle}>
+                97          
+            </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Closed Tickets
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={4}>
+         <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>Rejected Tickets</p>
+              <h3 className={classes.cardTitle}>
+                7            
+            </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of Rejected Tickets
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={6} md={4}>
+         <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <Icon>note_add</Icon>
+              </CardIcon>
+              <p className={classes.cardCategory}>On Hold Tickets</p>
+              <h3 className={classes.cardTitle}>
+                3           
+            </h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                List of On Hold Tickets
+                </a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        {/* <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
@@ -167,8 +276,8 @@ export default function Dashboard() {
               </div>
             </CardFooter>
           </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
+        </GridItem> */}
+        {/* <GridItem xs={12} sm={12} md={4}>
           <Card chart>
             <CardHeader color="danger">
               <ChartistGraph
@@ -232,8 +341,8 @@ export default function Dashboard() {
               }
             ]}
           />
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
+        </GridItem> */}
+        {/* <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="warning">
               <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
@@ -254,7 +363,7 @@ export default function Dashboard() {
               />
             </CardBody>
           </Card>
-        </GridItem>
+        </GridItem> */}
       </GridContainer>
     </div>
   );

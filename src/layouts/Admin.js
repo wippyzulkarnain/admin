@@ -96,7 +96,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"Biznet Gio"}
+        logoText={"Biznet Gio Cloud"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
