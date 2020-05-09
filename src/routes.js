@@ -29,7 +29,7 @@ import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
-import LoginPage from "views/Login/login.js";
+import TicketCard from "views/TicketCard/TicketCard.js";
 
 import Icons from "views/Icons/Icons.js";
 import Maps from "views/Maps/Maps.js";
@@ -48,9 +48,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/user",
+    path: "/create-ticket",
     name: "Create Ticket",
-    rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
     layout: "/admin"
@@ -96,21 +95,22 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/rtl-page",
-    name: "RTL Support",
+    path: "/card",
+    name: "Card",
     rtlName: "پشتیبانی از راست به چپ",
     icon: Language,
-    component: RTLPage,
-    layout: "/rtl"
+    component: TicketCard,
+    layout: "/admin",
+    invisible: true
   },
-  {
-    path: "/upgrade-to-pro",
-    name: "Upgrade To PRO",
-    rtlName: "التطور للاحترافية",
-    icon: Unarchive,
-    component: UpgradeToPro,
-    layout: "/admin"
-  }
+  // {
+  //   path: "/upgrade-to-pro",
+  //   name: "Upgrade To PRO",
+  //   rtlName: "التطور للاحترافية",
+  //   icon: Unarchive,
+  //   component: UpgradeToPro,
+  //   layout: "/admin"
+  // }
 ];
 
 export default dashboardRoutes;

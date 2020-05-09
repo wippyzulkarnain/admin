@@ -41,6 +41,8 @@ export default function Sidebar(props) {
             [" " + classes[color]]: activeRoute(prop.layout + prop.path)
           });
         }
+        if (prop.invisible) return null;
+
         const whiteFontClasses = classNames({
           [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
         });

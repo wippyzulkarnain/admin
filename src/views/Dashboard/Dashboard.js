@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Store from "@material-ui/icons/Store";
@@ -28,8 +28,16 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 import { bugs, website, server } from "variables/general.js";
+import {
+  successColor,
+  whiteColor,
+  grayColor,
+  hexToRgb
+} from "assets/jss/material-dashboard-react.js";
 
 import {
   dailySalesChart,
@@ -37,24 +45,109 @@ import {
   completedTasksChart
 } from "variables/charts.js";
 
-import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+// import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
-const useStyles = makeStyles(styles);
+const styles = theme => ({
+  successText: {
+    color: successColor[0]
+  },
+  upArrowCardCategory: {
+    width: "16px",
+    height: "16px"
+  },
+  stats: {
+    color: grayColor[0],
+    display: "inline-flex",
+    fontSize: "12px",
+    lineHeight: "22px",
+    "& svg": {
+      top: "4px",
+      width: "16px",
+      height: "16px",
+      position: "relative",
+      marginRight: "3px",
+      marginLeft: "3px"
+    },
+    "& .fab,& .fas,& .far,& .fal,& .material-icons": {
+      top: "4px",
+      fontSize: "16px",
+      position: "relative",
+      marginRight: "3px",
+      marginLeft: "3px"
+    }
+  },
+  cardCategory: {
+    color: grayColor[0],
+    margin: "0",
+    fontSize: "14px",
+    marginTop: "0",
+    paddingTop: "10px",
+    marginBottom: "0"
+  },
+  cardCategoryWhite: {
+    color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
+    margin: "0",
+    fontSize: "14px",
+    marginTop: "0",
+    marginBottom: "0"
+  },
+  cardTitle: {
+    color: grayColor[2],
+    marginTop: "0px",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none",
+    "& small": {
+      color: grayColor[1],
+      fontWeight: "400",
+      lineHeight: "1"
+    }
+  },
+  cardTitleWhite: {
+    color: whiteColor,
+    marginTop: "0px",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none",
+    "& small": {
+      color: grayColor[1],
+      fontWeight: "400",
+      lineHeight: "1"
+    }
+  }
+});
 
-export default function Dashboard() {
-  const classes = useStyles();
-  return (
-    <div>
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data:[]
+    };
+  }
+componentDidMount(){
+ axios.get("http://localhost:3030/dashboard-list").then(res => {
+   const data = res.data
+ this.setState({data})
+ })
+}
+
+  render(props) {
+          const { classes } = this.props;
+          const { data } = this.state
+    return <div>
       <GridContainer>
         <GridItem xs={12} sm={6} md={4}>
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
-                <Icon>note_add</Icon>
+                <Icon>description</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Created Tickets</p>
-              <h3 className={classes.cardTitle}>
-            30              
+  <p className={classes.cardCategory} id = "created">Created Tickets</p>
+              <h3 className={classes.cardTitle} >{data["created"]}
             </h3>
             </CardHeader>
             <CardFooter stats>
@@ -78,9 +171,9 @@ export default function Dashboard() {
               20
               </h3>
             </CardHeader>
-            <CardFooter stats>
+            <CardFooter component={Link} to="/login" stats>
               <div className={classes.stats}>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
+                <a href="/login" >
                 List of Approved Tickets
                 </a>
               </div>
@@ -366,5 +459,9 @@ export default function Dashboard() {
         </GridItem> */}
       </GridContainer>
     </div>
-  );
-}
+  
+    
+
+}}
+
+export default withStyles(styles)(Dashboard)

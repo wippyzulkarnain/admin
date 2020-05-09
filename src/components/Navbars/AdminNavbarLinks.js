@@ -20,6 +20,10 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
+import {
+  Link
+} from 'react-router-dom'
+
 
 const useStyles = makeStyles(styles);
 
@@ -50,7 +54,10 @@ export default function AdminNavbarLinks() {
   return (
     <div>
       <div className={classes.searchWrapper}>
-        <CustomInput
+        <Button color={window.innerWidth > 959 ? "transparent" : "white"} aria-label="edit">
+         Welcome Prasetya          
+         </Button>
+        {/* <CustomInput
           formControlProps={{
             className: classes.margin + " " + classes.search
           }}
@@ -63,22 +70,22 @@ export default function AdminNavbarLinks() {
         />
         <Button color="white" aria-label="edit" justIcon round>
           <Search />
-        </Button>
+        </Button> */}
       </div>
-      <Button
+      {/* <Button
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
         simple={!(window.innerWidth > 959)}
         aria-label="Dashboard"
         className={classes.buttonLink}
-      >
-        <Dashboard className={classes.icons} />
+      > */}
+        {/* <Dashboard className={classes.icons} />
         <Hidden mdUp implementation="css">
           <p className={classes.linkText}>Welcome</p>
         </Hidden>
-      </Button>
+      </Button> */}
       <div className={classes.manager}>
-        <Button
+        {/* <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
@@ -86,16 +93,16 @@ export default function AdminNavbarLinks() {
           aria-haspopup="true"
           onClick={handleClickNotification}
           className={classes.buttonLink}
-        >
-          <Notifications className={classes.icons} />
+        > */}
+          {/* <Notifications className={classes.icons} />
           <span className={classes.notifications}>5</span>
           <Hidden mdUp implementation="css">
             <p onClick={handleCloseNotification} className={classes.linkText}>
               Notification
             </p>
           </Hidden>
-        </Button>
-        <Poppers
+        </Button> */}
+        {/* <Poppers
           open={Boolean(openNotification)}
           anchorEl={openNotification}
           transition
@@ -153,7 +160,7 @@ export default function AdminNavbarLinks() {
               </Paper>
             </Grow>
           )}
-        </Poppers>
+        </Poppers> */}
       </div>
       <div className={classes.manager}>
         <Button
@@ -207,10 +214,12 @@ export default function AdminNavbarLinks() {
                     </MenuItem>
                     <Divider light />
                     <MenuItem
-                      onClick={handleCloseProfile}
+                    component={Link}
+                     to="/login"                     
+                     onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
-                      Logout
+                      Log Out
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
