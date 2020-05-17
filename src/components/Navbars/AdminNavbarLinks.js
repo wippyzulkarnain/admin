@@ -55,7 +55,7 @@ export default function AdminNavbarLinks() {
     <div>
       <div className={classes.searchWrapper}>
         <Button color={window.innerWidth > 959 ? "transparent" : "white"} aria-label="edit">
-         Welcome Prasetya          
+         Welcome {localStorage["userFullName"]}          
          </Button>
         {/* <CustomInput
           formControlProps={{

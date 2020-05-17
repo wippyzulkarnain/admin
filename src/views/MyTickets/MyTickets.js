@@ -53,7 +53,9 @@ constructor(props) {
 }
 
   componentDidMount() {
-    axios.get("http://localhost:3030/ticket-list?status="+localStorage["nonEditTableList"]+"&team="+localStorage["userTeam"]).then(res => {
+    let url = "http://localhost:3030/my-ticket-list?userId=" + localStorage["userId"]
+    console.log(url)
+    axios.get(url).then(res => {
       const data = res.data
       this.setState({
         data
@@ -77,7 +79,7 @@ constructor(props) {
   return <GridContainer>
     <GridItem>
       <MaterialTable
-            title="Ticket List"
+            title="My Ticket List"
 
       columns={columns}  // <-- Set the columns on the table
       data={data}        // <-- Set the data on the table

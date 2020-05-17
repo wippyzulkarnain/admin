@@ -53,7 +53,7 @@ constructor(props) {
 }
 
   componentDidMount() {
-    axios.get("http://localhost:3030/ticket-list?status="+localStorage["nonEditTableList"]+"&team="+localStorage["userTeam"]).then(res => {
+    axios.get("http://localhost:3030/ticket-list?status="+localStorage["nonEditTableList"]).then(res => {
       const data = res.data
       this.setState({
         data
@@ -90,16 +90,6 @@ constructor(props) {
           );
         }
       }}
-       actions = {
-         [{
-           icon: 'edit',
-           tooltip: 'view ticket',
-           onClick: (event, rowData) => {
-             localStorage.setItem("ticketId",rowData.ticketId)
-             window.location.href = "Card"
-            }
-         }]
-       }
       options={{
         actionsColumnIndex: 5,
       }}

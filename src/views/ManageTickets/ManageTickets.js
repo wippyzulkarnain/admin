@@ -152,33 +152,21 @@ class Dashboard extends React.Component {
   approved () {
     localStorage.setItem('nonEditTableList',"approved")
   }
-  move = () => {
-    const values = {
-      status : this.state.status,
-      ticketId : localStorage["ticketId"],
-      pic : this.state.pic 
-    }
-      axios.patch("http://localhost:3030/ticket", values)
-            .then(function (response) {
-               console.log(response)
-               window.location.href = "Card"
-    
-            }).catch(function (error) {
-              alert('wrong payload');
-            })
-      
-          }
+  
 
   
 componentDidMount(){
- axios.get("http://localhost:3030/dashboard-list").then(res => {
+ axios.get("http://localhost:3030/dashboard-list?team=" + localStorage["userTeam"]).then(res => {
+   console.log(data)
    const data = res.data
  this.setState({data})
  })
 }
 
+
   render(props) {
           const { classes } = this.props;
+
           const { data } = this.state
     return <div>
       <GridContainer>
@@ -195,7 +183,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.created}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Created Tickets
                 </a>
@@ -218,7 +206,7 @@ componentDidMount(){
             <CardFooter component={Link} to="/login" stats>
               <div className={classes.stats}>
               <a  onClick={this.approved}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Approved Tickets
                 </a>
@@ -241,7 +229,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats} >
               <a  onClick={this.assigned("assigned")}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Assigned Tickets
                 </a>
@@ -263,7 +251,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.inprogress}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Work in Progress Tickets
                 </a>
@@ -285,7 +273,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.resolved}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Resolved Tickets
                 </a>
@@ -307,7 +295,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.closed}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Closed Tickets
                 </a>
@@ -329,7 +317,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.rejected}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of Rejected Tickets
                 </a>
@@ -351,7 +339,7 @@ componentDidMount(){
             <CardFooter stats>
               <div className={classes.stats}>
               <a  onClick={this.onhold}
-               href="tablelistnonedit" 
+               href="tablelist" 
                 >
                 List of On Hold Tickets
                 </a>

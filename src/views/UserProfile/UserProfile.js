@@ -60,7 +60,9 @@ export default function UserProfile() {
     downtime : '',
     affectedSystem : '',
     affectedInfrastructure : '',
-    changePlan : ''
+    changePlan : '',
+    rollbackPlan : '' ,
+    serviceImpact : ''
   });
 
   const handleChangeForm = name => event => {
@@ -211,6 +213,42 @@ console.log("wakwkawak")
                       multiline: true,
                       rows: 5,
                       onChange :  handleChangeForm("changePlan")
+                    }}
+                    
+                  />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Service Impact</InputLabel>
+                  <CustomInput
+                  value = {values["serviceImpact"]}
+                    id="serviceImpact"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      multiline: true,
+                      rows: 5,
+                      onChange :  handleChangeForm("serviceImpact")
+                    }}
+                    
+                  />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Rollback Plan</InputLabel>
+                  <CustomInput
+                  value = {values["rollbackPlan"]}
+                    id="rollbackPlan"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      multiline: true,
+                      rows: 5,
+                      onChange :  handleChangeForm("rollbackPlan")
                     }}
                     
                   />

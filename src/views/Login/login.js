@@ -65,16 +65,20 @@ const login = () => {
 
   axios.post("http://localhost:3030/login",values)
     .then(function (response) {
-     
+          localStorage.clear()
+
       if (response.status == 201){
-          localStorage.setItem('userId', response.data["data"]);
+        console.log(response.data)
+          localStorage.setItem('userId', response.data["userId"]);
+          localStorage.setItem('userRole', response.data["role"]);
+          localStorage.setItem('userTeam', response.data["team"]);
+          localStorage.setItem('userFullName', response.data["fullName"]);
         window.location.href = "admin"
       }
     }).catch(function (error) {
       alert('Wrong Id or Username');
     })
 };
-console.log("wakwkawak")
   return (
        <Container component="main" maxWidth="xs">
       <CssBaseline />

@@ -3,6 +3,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 // core components
+import { withStyles } from "@material-ui/core/styles";
+import MenuItem from '@material-ui/core/MenuItem';
+import Switch from "@material-ui/core/Switch";
+
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
@@ -14,11 +18,14 @@ import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import TextField from '@material-ui/core/TextField';
-
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import { blackColor, hexToRgb } from "assets/jss/material-dashboard-react.js";
 import avatar from "assets/img/faces/marc.jpg";
+import axios from 'axios';
 
-const styles = {
+const styles = theme => ({
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
     margin: "0",
@@ -34,124 +41,325 @@ const styles = {
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
     textDecoration: "none"
-  }
-};
+  },
+  formControl: {
+      margin: theme.spacing(0),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(0),
+    },
+});
 
 const useStyles = makeStyles(styles);
 
 
-export default function UserProfile() {
-  const classes = useStyles();
+class CardDetails extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      data:[],
+    dropdown:[],
+    dropdownstatus:[],
+    status : "",
+    pic : ""
+    };
+  }
+  
+
+  handleChangeForm = event =>{
+    const data = event.target.value
+    this.setState({
+      status: event.target.value 
+   },console.log("masuk",this.state.status))
+
+    };
+    handleChangePic = event =>{
+      const data = event.target.value
+      this.setState({
+        pic: event.target.value 
+     },console.log("masuk",this.state.pic))
+  
+      };
+      test = () => {
+        console.log(this.state)
+      }
+create = () => {
+const values = {
+  status : this.state.status,
+  ticketId : localStorage["ticketId"],
+  pic : this.state.pic 
+}
+  axios.patch("http://localhost:3030/ticket", values)
+        .then(function (response) {
+           console.log(response)
+           window.location.href = "Card"
+
+        }).catch(function (error) {
+          alert('wrong payload');
+        })
+  
+      }
+componentDidMount(){
+  let url = "http://localhost:3030/ticket-details?ticketId=" + localStorage["ticketId"]
+  console.log("url",url)
+ axios.get(url).then(res => {
+   const data = res.data[0]
+ this.setState({data})
+ console.log("DATA",data)
+ let status = {status : data["status"] , role : data["role"]}
+axios.post("http://localhost:3030/status-list",status).then(res => {
+  console.log(res)
+  const formstatus = res.data
+this.setState({ dropdownstatus : formstatus} , console.log("MASUK2",this.state.dropdownstatus))
+})
+ })
+ 
+ axios.get("http://localhost:3030/pic-list?ticketId=" + localStorage["ticketId"]).then(res => {
+  const formpic = res.data
+this.setState({ dropdown : formpic} , console.log("MASUK2",this.state.dropdown))
+})
+
+}
+  render(props) {
+      const { classes } = this.props;
+          const { data } = this.state
+          // console.log("data" , data["status"])
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color= "primary">
-              <GridItem xs={12} sm={12} md={3}>
+              <GridItem xs={12} sm={12} md={12}>
 
-              <h4 className={classes.cardTitleWhite}>Change Server</h4>
-              <p className={classes.cardCategoryWhite}>Biz-023</p>
+  <h4 className={classes.cardTitleWhite}>{data["subject"]}</h4>
+  <p className={classes.cardCategoryWhite}>Ticket ID : {data["ticketId"]}</p>
+  <p className={classes.cardCategoryWhite}>Status : {data["status"]}</p>
+  <p className={classes.cardCategoryWhite}>Pic : {data["pic"]}</p>
+
               </GridItem>
             </CardHeader>
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
+                          
                   <TextField
-                    id="standard-read-only-input"
-                    label="Team"
-                    defaultValue="Operations"
-                    InputProps={{
-                      readOnly: true,
-                    }}
-                  />
+          id = "filled-read-only-input"
+          label="Team" 
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={data["team"]}
+          InputProps={{
+            readOnly: true,
+            
+          }}
+        />         
+
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <CustomInput
+                  <TextField
                     labelText="Description"
-                    id="description"
+                    id = "filled-read-only-input"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    label = "Description"
+                    value={data["description"]}
+                     InputProps={{
+                    readOnly: true,
+                     }}
+                     InputLabelProps={{
+                      shrink: true,
+                     }}
                   />
                 </GridItem>
                 </GridContainer>
                 
                 
               <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
+                <GridItem xs={12} sm={12} md={6}>
+                  <TextField
                     labelText="Maintenance Schedule"
-                    id="city"
+                    id="filled-read-only-input"
                     formControlProps={{
                       fullWidth: true
                     }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText = "Downtime"
-                    id="affected-system"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText = "Status"
-                    id="affected-infra"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
+                    label = "Maintenance schedule"
+                    value={data["maintenanceSchedule"]}
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText = "Affected System"
-                    id="city"
+                  <TextField
+                    labelText="Downtime"
+                    id="filled-read-only-input"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    label = "Downtime"
+                    value={data["Downtime"]}
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText = "Affected Infrastructure"
-                    id="city"
+                 <TextField
+                    labelText="Affected System"
+                    id="filled-read-only-input"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    label = "Affected System"
+                    value = {
+                      data["affectedSystem"]
+                    }
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <TextField
+                    labelText="Affected Infrastructure"
+                    id="filled-read-only-input"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    label = "Affected Infrastructure"
+                    value = {
+                      data["affectedInfrastructure"]
+                    }
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                      
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <InputLabel style={{ color: "#AAAAAA" }}>Change Plan</InputLabel>
-                  <CustomInput
-                    id="change-plan"
+                  <TextField
+                    id = "filled-multiline-flexible"
                     formControlProps={{
                       fullWidth: true
                     }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5
-                    }}
+                    multiline
+                    value = {data["changePlan"]}
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={3}>
-                <DropDown>
-                </DropDown>
+                <GridItem xs={12} sm={12} md={8}>
+
+       
+          <FormControl className={classes.formControl}>
+        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+          Status
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          // value={Division}
+          // onChange={handleChange}
+          displayEmpty
+          onChange = {
+            this.handleChangeForm
+          }
+          value = {this.state.status}
+
+          className={classes.selectEmpty}
+        >
+            {this.state.dropdownstatus.map((row, i) => <MenuItem value={row.value}> {row.value} </MenuItem>)}  
+        </Select>
+      </FormControl>
+      
+        {/* {data["status"] == "created" && (
+          <FormControl className={classes.formControl}
+
+          >
+        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+          Status
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          // value={Division}
+          // onChange={handleChange}
+          value = {this.state.status}
+          className={classes.selectEmpty}
+          onChange = {
+            this.handleChangeForm
+          }
+        >
+          <MenuItem value="created">
+            <em>Created</em>
+          </MenuItem>
+          <MenuItem value={"approved"}>Approve</MenuItem>
+          <MenuItem value={"reject"}>Reject</MenuItem>
+        </Select>
+      </FormControl>
+        )} */}
+        { (data["status"] == "assigned" || data["status"] == "approved" || data["status"] == "in progress" || data["status"] == "on hold"  ) && (
+          <FormControl className={classes.formControl}
+
+          >
+        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+          Pic
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          // value={Division}
+          // onChange={handleChange}
+          value = {this.state.pic}
+          className={classes.selectEmpty}
+          onChange = {
+            this.handleChangePic
+          }
+        >
+            {this.state.dropdown.map((row, i) => <MenuItem value={row.userId}> {row.fullName} </MenuItem>)}   
+        </Select>
+      </FormControl>
+        )}
                 </GridItem>
                 </GridContainer>
             </CardBody>
             <CardFooter>
               <GridItem xs={12} sm={12} md={3}>
-              <Button color="primary">Save Changes</Button>
+              <Button color="primary"
+              onClick={this.create}
+              >Save Changes</Button>
+              <Button color="primary"
+              onClick={this.test}
+              >Test Changes</Button>
               </GridItem>          
                </CardFooter>
           </Card>
@@ -160,4 +368,5 @@ export default function UserProfile() {
       </GridContainer>
     </div>
   );
-}
+}}
+export default withStyles(styles)(CardDetails)
