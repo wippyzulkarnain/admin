@@ -92,7 +92,7 @@ console.log("wakwkawak")
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-            <CardHeader color= "primary">
+            <CardHeader color= "success">
               <h4 className={classes.cardTitleWhite}>Create Ticket</h4>
               <p className={classes.cardCategoryWhite}>Complete your Form</p>
             </CardHeader>
@@ -256,7 +256,7 @@ console.log("wakwkawak")
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary" onClick={create} >Create Ticket</Button>
+              <Button color="success" onClick={create} >Create Ticket</Button>
             </CardFooter>
           </Card>
         </GridItem>

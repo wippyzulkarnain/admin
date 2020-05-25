@@ -90,16 +90,16 @@ constructor(props) {
           );
         }
       }}
-      actions = {
-        [{
-          icon: 'search',
-          tooltip: 'view ticket',
-          onClick: (event, rowData) => {
-            localStorage.setItem("ticketId",rowData.ticketId)
-            window.location.href = "CardNonEdit"
-           }
-        }]
-      }
+       actions = {
+         [{
+           icon: 'edit',
+           tooltip: 'view ticket',
+           onClick: (event, rowData) => {
+             localStorage.setItem("ticketId",rowData.ticketId)
+             window.location.href = "Card"
+            }
+         }]
+       }
       options={{
         actionsColumnIndex: 5,
       }}

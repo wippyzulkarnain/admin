@@ -120,7 +120,7 @@ class CardDetails extends React.Component{
         axios.post("http://localhost:3030/comment", values)
         .then(function (response) {
            console.log(response)
-           window.location.href = "Card"
+           window.location.href = "CardNonEdit"
 
         }).catch(function (error) {
           alert('wrong payload');
@@ -135,7 +135,7 @@ const values = {
   axios.patch("http://localhost:3030/ticket", values)
         .then(function (response) {
            console.log(response)
-           window.location.href = "Card"
+           window.location.href = "CardNonEdit"
 
         }).catch(function (error) {
           alert('wrong payload');
@@ -184,6 +184,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
   <p className={classes.cardCategoryWhite}>Status : {data["status"]}</p>
   <p className={classes.cardCategoryWhite}>Pic : {data["pic"]}</p>
   <p className={classes.cardCategoryWhite}>Created At : {data["Date"]}</p>
+
               </GridItem>
             </CardHeader>
             <CardBody>
@@ -324,88 +325,31 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8}>
-
-       
-          <FormControl className={classes.formControl}>
-        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Status
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"
-          // value={Division}
-          // onChange={handleChange}
-          displayEmpty
-          onChange = {
-            this.handleChangeForm
-          }
-          value = {this.state.status}
-
-          className={classes.selectEmpty}
-        >
-            {this.state.dropdownstatus.map((row, i) => <MenuItem value={row.value}> {row.value} </MenuItem>)}  
-        </Select>
-      </FormControl>
-      
-        {/* {data["status"] == "created" && (
-          <FormControl className={classes.formControl}
-
-          >
-        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Status
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"
-          // value={Division}
-          // onChange={handleChange}
-          value = {this.state.status}
-          className={classes.selectEmpty}
-          onChange = {
-            this.handleChangeForm
-          }
-        >
-          <MenuItem value="created">
-            <em>Created</em>
-          </MenuItem>
-          <MenuItem value={"approved"}>Approve</MenuItem>
-          <MenuItem value={"reject"}>Reject</MenuItem>
-        </Select>
-      </FormControl>
-        )} */}
-        { (data["status"] == "assigned" || data["status"] == "approved" || data["status"] == "in progress" || data["status"] == "on hold"  ) && (
-          <FormControl className={classes.formControl}
-
-          >
-        <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Pic
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"
-          // value={Division}
-          // onChange={handleChange}
-          value = {this.state.pic}
-          className={classes.selectEmpty}
-          onChange = {
-            this.handleChangePic
-          }
-        >
-            {this.state.dropdown.map((row, i) => <MenuItem value={row.userId}> {row.fullName} </MenuItem>)}   
-        </Select>
-      </FormControl>
-        )}
+                <TextField
+                    labelText="Statis"
+                    id="filled-read-only-input"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    label = "Status"
+                    value = {
+                      data["status"]
+                    }
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                      InputLabelProps={{
+                      shrink: true,
+                      }}
+                      
+                  />
+        
                 </GridItem>
                 </GridContainer>
             </CardBody>
             <CardFooter>
               <GridItem xs={12} sm={12} md={3}>
-              <Button color="success"
-              onClick={this.create}
-              >Save Changes</Button>
-              <Button color="success"
-              onClick={this.test}
-              >Test Changes</Button>
               </GridItem>          
                </CardFooter>
           </Card>

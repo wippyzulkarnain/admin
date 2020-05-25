@@ -26,6 +26,8 @@ import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
+import DashboardVP from "views/DashboardVP/DashboardVP.js";
+
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import ManageTicket from "views/ManageTickets/ManageTickets.js";
@@ -36,6 +38,7 @@ import MyTickets from "views/MyTickets/MyTickets.js";
 
 import Typography from "views/Typography/Typography.js";
 import TicketCard from "views/TicketCard/TicketCard.js";
+import TicketCardNonEdit from "views/TicketCardNonEdit/TicketCardNonEdit.js";
 
 import Icons from "views/Icons/Icons.js";
 import Maps from "views/Maps/Maps.js";
@@ -93,6 +96,15 @@ var dashboardRoutes = [
     rtlName: "پشتیبانی از راست به چپ",
     icon: Language,
     component: TicketCard,
+    layout: "/admin",
+    invisible: true
+  },
+  {
+    path: "/cardnonedit",
+    name: "CardNonEdit",
+    rtlName: "پشتیبانی از راست به چپ",
+    icon: Language,
+    component: TicketCardNonEdit,
     layout: "/admin",
     invisible: true
   },
@@ -157,6 +169,15 @@ else if (role == "manager") {
          layout: "/admin",
          invisible: true
        },
+       {
+        path: "/cardnonedit",
+        name: "CardNonEdit",
+        rtlName: "پشتیبانی از راست به چپ",
+        icon: Language,
+        component: TicketCardNonEdit,
+        layout: "/admin",
+        invisible: true
+      },
     ]
 }
 else {
@@ -165,9 +186,16 @@ else {
       name: "Dashboard",
       rtlName: "لوحة القيادة",
       icon: Dashboard,
-      component: DashboardPage,
+      component: DashboardVP,
       layout: "/admin"
     },
+    {
+      path: "/create-ticket",
+      name: "Create Ticket",
+      icon: Person,
+      component: UserProfile,
+      layout: "/admin"
+    }, 
     // {
     //   path: "/create-ticket",
     //   name: "CreateTicket",
@@ -176,20 +204,38 @@ else {
     //   component: UserProfile,
     //   layout: "/admin"
     // },
-     {
-      path: "/table",
-      name: "View Ticket",
-      rtlName: "قائمة الجدول",
-      icon: "content_paste",
-      component: TableList,
-      layout: "/admin"
-    },
+    //  {
+    //   path: "/table",
+    //   name: "View Ticket",
+    //   rtlName: "قائمة الجدول",
+    //   icon: "content_paste",
+    //   component: TableList,
+    //   layout: "/admin"
+    // },
     {
       path: "/card",
       name: "Card",
       rtlName: "پشتیبانی از راست به چپ",
       icon: Language,
       component: TicketCard,
+      layout: "/admin",
+      invisible: true
+    },
+    {
+      path: "/tablelist",
+      name: "Table List",
+      rtlName: "قائمة الجدول",
+      icon: "content_paste",
+      component: TableList,
+      layout: "/admin",
+      invisible : true
+    },
+    {
+      path: "/cardnonedit",
+      name: "CardNonEdit",
+      rtlName: "پشتیبانی از راست به چپ",
+      icon: Language,
+      component: TicketCardNonEdit,
       layout: "/admin",
       invisible: true
     },
