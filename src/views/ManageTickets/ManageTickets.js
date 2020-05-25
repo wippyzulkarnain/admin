@@ -156,7 +156,7 @@ class Dashboard extends React.Component {
 
   
 componentDidMount(){
- axios.get("http://localhost:3030/dashboard-list?team=" + localStorage["userTeam"]).then(res => {
+ axios.get("https://skripsi-backend-278308.df.r.appspot.com/dashboard-list?team=" + localStorage["userTeam"]).then(res => {
    console.log(data)
    const data = res.data
  this.setState({data})

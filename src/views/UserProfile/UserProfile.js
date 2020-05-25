@@ -74,7 +74,7 @@ export default function UserProfile() {
   
   const create = () => {
     console.log(values);
-    axios.post("http://localhost:3030/ticket", values)
+    axios.post("https://skripsi-backend-278308.df.r.appspot.com/ticket", values)
       .then(function (response) {
           alert(`Ticket Created`)
          window.location.href = "admin"
@@ -85,7 +85,6 @@ export default function UserProfile() {
 
   }
   
-console.log("wakwkawak")
 
   return (
     <div>

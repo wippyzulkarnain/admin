@@ -158,7 +158,7 @@ class Dashboard extends React.Component {
       ticketId : localStorage["ticketId"],
       pic : this.state.pic 
     }
-      axios.patch("http://localhost:3030/ticket", values)
+      axios.patch("https://skripsi-backend-278308.df.r.appspot.com//ticket", values)
             .then(function (response) {
                console.log(response)
                window.location.href = "Card"
@@ -171,7 +171,7 @@ class Dashboard extends React.Component {
 
   
 componentDidMount(){
- axios.get("http://localhost:3030/dashboard-list").then(res => {
+ axios.get("https://skripsi-backend-278308.df.r.appspot.com/dashboard-list").then(res => {
    const data = res.data
  this.setState({data})
  })
