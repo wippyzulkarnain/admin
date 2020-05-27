@@ -321,6 +321,36 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                       }}
                   />
                 </GridItem>
+                <GridItem xs={12} sm={12} md={12}>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Service Impact</InputLabel>
+                  <TextField
+                    id = "filled-multiline-flexible"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    multiline
+                    value = {data["serviceImpact"]}
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={12}>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Rollback Plan</InputLabel>
+                  <TextField
+                    id = "filled-multiline-flexible"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    multiline
+                    value = {data["rollbackPlan"]}
+                    InputProps={{
+                      readOnly: true,
+            
+                      }}
+                  />
+                </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8}>
@@ -403,9 +433,9 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
               <Button color="success"
               onClick={this.create}
               >Save Changes</Button>
-              <Button color="success"
+              {/* <Button color="success"
               onClick={this.test}
-              >Test Changes</Button>
+              >Test Changes</Button> */}
               </GridItem>          
                </CardFooter>
           </Card>

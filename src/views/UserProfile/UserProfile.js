@@ -93,14 +93,14 @@ export default function UserProfile() {
           <Card>
             <CardHeader color= "success">
               <h4 className={classes.cardTitleWhite}>Create Ticket</h4>
-              <p className={classes.cardCategoryWhite}>Complete your Form</p>
+              <p className={classes.cardCategoryWhite}>Complete Your Form</p>
             </CardHeader>
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <TextField
                   id="standard-full-width"
-                  label="subject"
+                  label="Subject"
                   placeholder="subject"
                   fullWidth
                   margin="normal"

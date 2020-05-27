@@ -63,17 +63,34 @@ constructor(props) {
   render (props){
               const { classes } = this.props;
           const { data } = this.state
-      const columns =[
-    { title: "ticketId", field: "ticketId" }, //assume here my backend schema is brand
-        { title: "subject", field: "subject" } ,//here model
-    { title: "status", field: "status" }, //here price
-    { title: "pic", field: "pic" } ,//here model
-    { title: "team", field: "team" } ,//here model
-        { title: "created by", field: "creator" } ,
+      if ( localStorage["nonEditTableList"] == "created" || localStorage["nonEditTableList"] == "approved"){
+          var columns =[
+    { title: "Ticket ID", field: "ticketId" }, //assume here my backend schema is brand
+        { title: "Subjext", field: "subject" } ,//here model
+    { title: "Status", field: "status" }, //here price
+    
+    // { title: "PIC", field: "pic" } ,//here model
+    
+    { title: "Team", field: "team" } ,//here model
+        { title: "Created By", field: "creator" } ,
 
-    { title: "created at", field: "createdAt" } ,
+    { title: "Created At", field: "createdAt" } ,
 
-  ];
+  ];} else{
+    var columns =[
+      { title: "Ticket ID", field: "ticketId" }, //assume here my backend schema is brand
+          { title: "Subjext", field: "subject" } ,//here model
+      { title: "Status", field: "status" }, //here price
+      
+      { title: "PIC", field: "pic" } ,//here model
+      
+      { title: "Team", field: "team" } ,//here model
+          { title: "Created By", field: "creator" } ,
+  
+      { title: "Created At", field: "createdAt" } ,
+  
+    ]
+  }
   return <GridContainer>
     <GridItem>
       <MaterialTable
