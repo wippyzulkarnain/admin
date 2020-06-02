@@ -193,6 +193,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                   <TextField
           id = "filled-read-only-input"
           label="Team" 
+          fullWidth
+                    multiline
           InputLabelProps={{
             shrink: true,
           }}
@@ -213,6 +215,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Description"
                     value={data["description"]}
                      InputProps={{
@@ -234,6 +238,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Maintenance schedule"
                     value={data["maintenanceSchedule"]}
                     InputProps={{
@@ -252,6 +258,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Downtime"
                     value={data["Downtime"]}
                     InputProps={{
@@ -270,6 +278,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Affected System"
                     value = {
                       data["affectedSystem"]
@@ -290,6 +300,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Affected Infrastructure"
                     value = {
                       data["affectedInfrastructure"]
@@ -313,6 +325,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["changePlan"]}
                     InputProps={{
@@ -328,6 +341,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["serviceImpact"]}
                     InputProps={{
@@ -343,6 +357,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["rollbackPlan"]}
                     InputProps={{

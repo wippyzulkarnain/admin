@@ -194,6 +194,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                   <TextField
           id = "filled-read-only-input"
           label="Team" 
+          fullWidth
+                    multiline
           InputLabelProps={{
             shrink: true,
           }}
@@ -210,10 +212,13 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                 <GridItem xs={12} sm={12} md={12}>
                   <TextField
                     labelText="Description"
-                    id = "filled-read-only-input"
+                    fullWidth
+                    id = "filled-multiline-flexible"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    multiline
+                    fullWidth
                     label = "Description"
                     value={data["description"]}
                      InputProps={{
@@ -235,6 +240,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Maintenance schedule"
                     value={data["maintenanceSchedule"]}
                     InputProps={{
@@ -253,6 +260,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Downtime"
                     value={data["Downtime"]}
                     InputProps={{
@@ -271,6 +280,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Affected System"
                     value = {
                       data["affectedSystem"]
@@ -291,6 +302,8 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Affected Infrastructure"
                     value = {
                       data["affectedInfrastructure"]
@@ -314,6 +327,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["changePlan"]}
                     InputProps={{
@@ -325,13 +339,15 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                 
               </GridContainer>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={8}>
+                <GridItem xs={12} sm={12} md={12}>
                 <TextField
                     labelText="Statis"
                     id="filled-read-only-input"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
+                    multiline
                     label = "Status"
                     value = {
                       data["status"]
@@ -353,6 +369,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["serviceImpact"]}
                     InputProps={{
@@ -368,6 +385,7 @@ this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
                     formControlProps={{
                       fullWidth: true
                     }}
+                    fullWidth
                     multiline
                     value = {data["rollbackPlan"]}
                     InputProps={{
