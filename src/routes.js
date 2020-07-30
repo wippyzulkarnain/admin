@@ -257,6 +257,14 @@ else {
       layout: "/admin",
       invisible: true
     },
+    {
+      path: "/Download",
+      name: "Download Report",
+      rtlName: "قائمة الجدول",
+      icon: "content_paste",
+      component: Download,
+      layout: "/admin"
+    },
   ]
 }
 
