@@ -36,7 +36,8 @@ import {
   successColor,
   whiteColor,
   grayColor,
-  hexToRgb
+  hexToRgb,
+  blackColor
 } from "assets/jss/material-dashboard-react.js";
 
 import {
@@ -56,7 +57,7 @@ const styles = theme => ({
     height: "16px"
   },
   stats: {
-    color: grayColor[0],
+    color: blackColor,
     display: "inline-flex",
     fontSize: "12px",
     lineHeight: "22px",
@@ -77,7 +78,7 @@ const styles = theme => ({
     }
   },
   cardCategory: {
-    color: grayColor[0],
+    color: blackColor,
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
@@ -92,7 +93,7 @@ const styles = theme => ({
     marginBottom: "0"
   },
   cardTitle: {
-    color: grayColor[2],
+    color: blackColor,
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
@@ -100,7 +101,7 @@ const styles = theme => ({
     marginBottom: "3px",
     textDecoration: "none",
     "& small": {
-      color: grayColor[1],
+      color: blackColor,
       fontWeight: "400",
       lineHeight: "1"
     }
@@ -114,7 +115,7 @@ const styles = theme => ({
     marginBottom: "3px",
     textDecoration: "none",
     "& small": {
-      color: grayColor[1],
+      color: blackColor,
       fontWeight: "400",
       lineHeight: "1"
     }
@@ -156,7 +157,7 @@ class Dashboard extends React.Component {
 
   
 componentDidMount(){
- axios.get("https://skripsi-backend-278308.df.r.appspot.com/dashboard-list").then(res => {
+ axios.get("https://hallowed-key-280311.et.r.appspot.com/dashboard-list").then(res => {
    console.log(data)
    const data = res.data
  this.setState({data})

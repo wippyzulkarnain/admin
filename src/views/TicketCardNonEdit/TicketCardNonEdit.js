@@ -117,7 +117,7 @@ class CardDetails extends React.Component{
           userId : localStorage["userId"]
         }
 
-        axios.post("https://skripsi-backend-278308.df.r.appspot.com/comment", values)
+        axios.post("https://hallowed-key-280311.et.r.appspot.com/comment", values)
         .then(function (response) {
            console.log(response)
            window.location.href = "CardNonEdit"
@@ -132,7 +132,7 @@ const values = {
   ticketId : localStorage["ticketId"],
   pic : this.state.pic 
 }
-  axios.patch("https://skripsi-backend-278308.df.r.appspot.com/ticket", values)
+  axios.patch("https://hallowed-key-280311.et.r.appspot.com/ticket", values)
         .then(function (response) {
            console.log(response)
            window.location.href = "CardNonEdit"
@@ -143,25 +143,25 @@ const values = {
   
       }
 componentDidMount(){
-  let url = "https://skripsi-backend-278308.df.r.appspot.com/ticket-details?ticketId=" + localStorage["ticketId"]
+  let url = "https://hallowed-key-280311.et.r.appspot.com/ticket-details?ticketId=" + localStorage["ticketId"]
   console.log("url",url)
  axios.get(url).then(res => {
    const data = res.data[0]
  this.setState({data})
  let status = {status : data["status"] , id : localStorage["userId"]}
  console.log("STATUS" , status)
-axios.post("https://skripsi-backend-278308.df.r.appspot.com/status-list",status).then(res => {
+axios.post("https://hallowed-key-280311.et.r.appspot.com/status-list",status).then(res => {
   const formstatus = res.data
 this.setState({ dropdownstatus : formstatus} , console.log("MASUK2",this.state.dropdownstatus))
 })
  })
  
- axios.get("https://skripsi-backend-278308.df.r.appspot.com/pic-list?ticketId=" + localStorage["ticketId"]).then(res => {
+ axios.get("https://hallowed-key-280311.et.r.appspot.com/pic-list?ticketId=" + localStorage["ticketId"]).then(res => {
   const formpic = res.data
 this.setState({ dropdown : formpic} , console.log("MASUK2",this.state.dropdown))
 })
 
-axios.get("https://skripsi-backend-278308.df.r.appspot.com/comment?id=" + localStorage["ticketId"]).then(res => {
+axios.get("https://hallowed-key-280311.et.r.appspot.com/comment?id=" + localStorage["ticketId"]).then(res => {
   const comment = res.data
 this.setState({ comment : comment} , console.log("MASUK4",this.state.comment))
 })

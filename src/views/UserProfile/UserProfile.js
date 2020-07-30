@@ -29,14 +29,14 @@ const styles = {
   //   width : 40
   // },
   cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
+    color: "#000",
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
     marginBottom: "0"
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
+    color: "#000",
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
@@ -74,7 +74,7 @@ export default function UserProfile() {
   
   const create = () => {
     console.log(values);
-    axios.post("https://skripsi-backend-278308.df.r.appspot.com/ticket", values)
+    axios.post("https://hallowed-key-280311.et.r.appspot.com/ticket", values)
       .then(function (response) {
           alert(`Ticket Created`)
          window.location.href = "admin"

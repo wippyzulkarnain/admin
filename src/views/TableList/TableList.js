@@ -53,7 +53,7 @@ constructor(props) {
 }
 
   componentDidMount() {
-    axios.get("https://skripsi-backend-278308.df.r.appspot.com/ticket-list?status="+localStorage["nonEditTableList"]+"&team="+localStorage["userTeam"]).then(res => {
+    axios.get("https://hallowed-key-280311.et.r.appspot.com/ticket-list?status="+localStorage["nonEditTableList"]+"&team="+localStorage["userTeam"]).then(res => {
       const data = res.data
       this.setState({
         data

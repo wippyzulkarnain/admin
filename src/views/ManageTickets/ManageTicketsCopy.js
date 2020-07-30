@@ -53,7 +53,7 @@ constructor(props) {
 }
 
   componentDidMount() {
-    let url = "https://skripsi-backend-278308.df.r.appspot.com/manage-ticket-list?userId=" + localStorage["userId"]
+    let url = "https://hallowed-key-280311.et.r.appspot.com/manage-ticket-list?userId=" + localStorage["userId"]
     console.log(url)
     axios.get(url).then(res => {
       const data = res.data

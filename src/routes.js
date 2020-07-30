@@ -33,6 +33,7 @@ import TableList from "views/TableList/TableList.js";
 import ManageTicket from "views/ManageTickets/ManageTickets.js";
 
 import TableListNonEdit from "views/TableListNonEdit/TableListNonEdit.js";
+import Download from "views/Download/Download.js";
 
 import MyTickets from "views/MyTickets/MyTickets.js";
 
@@ -151,6 +152,14 @@ else if (role == "manager") {
          component: ManageTicket,
          layout: "/admin"
        },
+       {
+        path: "/Download",
+        name: "Download Report",
+        rtlName: "قائمة الجدول",
+        icon: "content_paste",
+        component: Download,
+        layout: "/admin"
+      },
        {
         path: "/tablelist",
         name: "Table List",
